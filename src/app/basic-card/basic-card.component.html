@@ -1,1 +1,9 @@
-<p [textContent]="message" (click)="emitMessage($event)"></p>
+<div style="border:2px solid red">
+    <p [textContent]="'Basic Card Message: ' + message"></p>
+    <button (click)="dataToComponent('Data was announced')">Announce Data</button>
+
+    <div>
+        <label for="">Child form input</label>
+        <input (keyup)="emitMessage(message)" type="text" name="message" [(ngModel)]="message" [value]="message">
+    </div>
+</div>

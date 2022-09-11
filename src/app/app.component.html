@@ -1,13 +1,14 @@
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, voluptas. Ab, molestias, odio hic est saepe, debitis dolorum totam veniam eveniet cum iste dicta obcaecati voluptatibus quod eius ullam eum?</p>
 
-<p>{{messageForChild}}</p>
+<p>Message From parent: {{messageForChild}}</p>
 
-<app-basic-card [message]="messageForChild" (messageClicked)="receiedMessage($event)"></app-basic-card>
-<app-basic-section></app-basic-section>
+<app-basic-card [(message)]="messageForChild"></app-basic-card>
+
+<app-basic-section [message]="messageForChild"></app-basic-section>
 
 <form action="">
     <div>
-        <label for=""></label>
-        <input type="text" [(ngModel)]="messageForChild" [value]="messageForChild">
+        <label for="">Form parent</label>
+        <input type="text" name="messageForChild" [(ngModel)]="messageForChild" [value]="messageForChild">
     </div>
 </form>

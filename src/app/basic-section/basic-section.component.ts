@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { CommunicationService } from '../services/communication.service';
 
 @Component({
   selector: 'app-basic-section',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BasicSectionComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  message = 'Mon message';
+
+  confirmBasicData$: Observable<string> = of('');
+  constructor(private com: CommunicationService) { }
 
   ngOnInit(): void {
+    this.confirmBasicData$ = this.com.dataSource$;
   }
 
 }

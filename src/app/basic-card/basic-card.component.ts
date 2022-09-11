@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { CommunicationService } from '../services/communication.service';
 
 @Component({
   selector: 'app-basic-card',
@@ -11,13 +12,21 @@ export class BasicCardComponent implements OnInit {
   message = 'Mon message';
 
   @Output()
-  messageClicked = new EventEmitter();
+  messageChange = new EventEmitter();
 
-  constructor() { }
+  basicData = '';
+  counter = 0;
+  constructor(private com: CommunicationService) { }
 
   ngOnInit(): void {
   }
   emitMessage(event: any) {
-    this.messageClicked.emit('Message clicked');
+    console.log(event)
+    this.messageChange.emit(event);
+  }
+
+  dataToComponent(data: string) {
+    this.counter++
+    this.com.announdeData(data + this.counter);
   }
 }

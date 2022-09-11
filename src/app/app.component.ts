@@ -9,7 +9,4 @@ export class AppComponent {
   title = 'projet-sandra';
   messageForChild = 'Message for child';
 
-  receiedMessage(event: any) {
-    console.log(event);
-  }
 }
