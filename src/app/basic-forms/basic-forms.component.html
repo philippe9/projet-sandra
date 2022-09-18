@@ -1,0 +1,32 @@
+<form action="" #testForm="ngForm" (ngSubmit)="logForm(testForm)">
+    <div>
+        <label for="">Nom</label>
+        <input type="text" [(ngModel)]="formElements.nom" name="nom">
+    </div>
+    <div>
+        <label for="">Prenom</label>
+        <input required type="text" [(ngModel)]="formElements.prenom" name="prenom">
+    </div>
+    <div *ngIf="testForm.form.touched" style="width: 100px;height: 100px;border: 2px solid red;"></div>
+    <button type="submit">Submit</button>
+</form>
+
+<form #testFormReactive="ngForm" [formGroup]="userControllerForm" (ngSubmit)="logFormReactive(userControllerForm)">
+    <div>
+        <label for="">Nom Reactive</label>
+        <input type="text" formControlName="nomReactive" name="nom">
+    </div>
+    <div>
+        <label for="">Prenom Reactive</label>
+        <input required type="text" formControlName="prenomReactive" name="prenom">
+    </div>
+    <div>
+        <label for="">Email Reactive</label>
+        <input required type="email" formControlName="emailReactive" name="email">
+        <small *ngIf="testFormReactive.form.controls['emailReactive'].errors == null">Notre champ email est correcte</small>
+        <small *ngIf="testFormReactive.form.controls['emailReactive'].errors != null">Notre champ email est
+      incorrecte</small>
+    </div>
+    <div *ngIf="testForm.form.touched" style="width: 100px;height: 100px;border: 2px solid red;"></div>
+    <button type="submit">Submit</button>
+</form>
