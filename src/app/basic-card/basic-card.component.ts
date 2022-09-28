@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CommunicationService } from '../services/communication.service';
 
 @Component({
@@ -14,11 +15,12 @@ export class BasicCardComponent implements OnInit {
   @Output()
   messageChange = new EventEmitter();
 
-  basicData = '';
+  basicData: string | null = '';
   counter = 0;
-  constructor(private com: CommunicationService) { }
+  constructor(private com: CommunicationService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
+    this.basicData = this.route.snapshot.paramMap.get('basic-name')
   }
   emitMessage(event: any) {
     console.log(event)
@@ -26,6 +28,7 @@ export class BasicCardComponent implements OnInit {
   }
 
   dataToComponent(data: string) {
+    this.router.navigate(['/home']);
     this.counter++
     this.com.announdeData(data + this.counter);
   }

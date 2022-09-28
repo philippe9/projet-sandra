@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { BasicCardComponent } from './basic-card/basic-card.component';
 import { BasicFormsComponent } from './basic-forms/basic-forms.component';
 import { BasicSectionComponent } from './basic-section/basic-section.component';
+import { BasicHomeComponent } from './basic-home/basic-home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BasicCardComponent,
     BasicSectionComponent,
-    BasicFormsComponent
+    BasicFormsComponent,
+    BasicHomeComponent
   ],
   imports: [
     BrowserModule,
